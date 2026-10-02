@@ -2,11 +2,15 @@ spring:
   application:
     name: Log-Learn-Project
 
+# logback-spring.xml will handle it.
 # If trace is on, then all will be on, info, warn, error, debug, trace, but if is set to debug then
-#  till debug it would be on, trace logs will not be visible
-#logging:
-#  level:
-#    root: trace
+#  till debug it would be on, trace logs will not be visible. This is recommneded to mention the package,
+#  if we want the trace or debug logs for a particular class.
+logging:
+  level:
+    root: info
+    com.pritam.services: trace
+
 
 
 # For service level logging, we can mention the package under level. Since root will bring a
@@ -20,9 +24,9 @@ spring:
 
 
 # For patterned logging
-logging:
+#logging:
 #  File.name to create the log file under logs folder, it may take some time to create, wait 10s
-  file:
-    name: logs/app.log
-  pattern:
-    console: "%d [%thread] %-5level %logger *** %msg%n%n"
+#  file:
+#    name: logs/app.log
+#  pattern:
+#    console: "%d [%thread] %-5level %logger *** %msg%n%n"
