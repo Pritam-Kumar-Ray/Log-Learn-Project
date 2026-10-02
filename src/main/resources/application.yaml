@@ -1,3 +1,28 @@
 spring:
   application:
     name: Log-Learn-Project
+
+# If trace is on, then all will be on, info, warn, error, debug, trace, but if is set to debug then
+#  till debug it would be on, trace logs will not be visible
+#logging:
+#  level:
+#    root: trace
+
+
+# For service level logging, we can mention the package under level. Since root will bring a
+#  lot of debug and trace logs, so it is recommended to use package level enablement
+
+#logging:
+#  level:
+#    com:
+#      pritam:
+#        services: trace
+
+
+# For patterned logging
+logging:
+#  File.name to create the log file under logs folder, it may take some time to create, wait 10s
+  file:
+    name: logs/app.log
+  pattern:
+    console: "%d [%thread] %-5level %logger *** %msg%n%n"
