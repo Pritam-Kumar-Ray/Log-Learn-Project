@@ -12,7 +12,22 @@ import java.util.Date;
 @Slf4j
 public class LogAspect {
 
-    @Pointcut("execution(* com.pritam.services.*.*(..))")
+//    @Pointcut("execution(* com.pritam.services.*.*(..))")
+
+    // Using within, we can define the package and the classname where we want the logs to be printed
+    // within -> So ALL the methods within the service will be intercepted
+//    @Pointcut("within(com.pritam.services.LogService)")
+
+    // @within works on the annotation which are placed above a class, means all the method
+    // inside the services annotated with @Service will be intercepted
+//    @Pointcut("@within(org.springframework.stereotype.Service)")
+
+    // @annotation -> This works on the annotation which is placed above a method
+//    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+
+    // To merge to pointcut concepts
+    // Here since && is used, so both should return as true
+    @Pointcut("within(com.pritam.services.LogService) && @within(org.springframework.stereotype.Service)")
     public void logAspectPointcut(){}
 
 //    @Before("execution(* com.pritam.services.LogService.dummyLogs(..))")
