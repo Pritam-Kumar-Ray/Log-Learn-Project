@@ -2,10 +2,7 @@ package com.pritam.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -14,6 +11,9 @@ import java.util.Date;
 @Aspect
 @Slf4j
 public class LogAspect {
+
+    @Pointcut("execution(* com.pritam.services.*.*(..))")
+    public void logAspectPointcut(){}
 
 //    @Before("execution(* com.pritam.services.LogService.dummyLogs(..))")
     @Before("execution(* com.pritam.services.*.*(..))")
@@ -27,7 +27,9 @@ public class LogAspect {
     }
 
 //    @Around("execution(* com.pritam..services..*(..))") -> Or we can use below
-    @Around("execution(* com.pritam.services.*.*(..))")
+//    @Around("execution(* com.pritam.services.*.*(..))")
+    // Using pointcut
+    @Around("logAspectPointcut()")
     public Object logMethod(ProceedingJoinPoint joinPoint) throws Throwable {
 
         Long t1 = System.currentTimeMillis();
