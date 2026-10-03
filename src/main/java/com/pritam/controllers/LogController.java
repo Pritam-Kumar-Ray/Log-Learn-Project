@@ -17,7 +17,7 @@ public class LogController {
     @GetMapping
     public ResponseEntity<String> createLog(){
         logService.dummyLogs();
-//        logService.parameterizedLogsExample("1234");
+        logService.parameterizedLogsExample("1234");
         return ResponseEntity.ok("Log Created");
     }
 
